@@ -16,9 +16,12 @@
    "dependencies": {
       "@graphql-tools/schema": "^8.5.1",
       "@graphql-yoga/node": "2.13.6",
+      "eth-sig-util": "^3.0.1",
+      "ethereumjs-util": "^7.1.5",
       "graphql": "^16.5.0",
       "graphql-import": "^1.0.2",
       "graphql-yoga": "^2.13.6",
+      "jsonwebtoken": "^8.5.1",
       "pg": "^8.7.3",
       "prettier": "^2.7.1",
       "reflect-metadata": "^0.1.13",
@@ -26,8 +29,8 @@
       "uuid": "^8.3.2"
    },
    "scripts": {
-      "start": "nodemon --exec ts-node src/index.ts",
+      "start": "nodemon --exec ts-node --files src/index.ts",
       "typeorm": "typeorm-ts-node-commonjs",
-      "gen-schema-types": "gql2ts src/TypeDefinitions/schema.graphql -o src/types/schema.d.ts"
+      "prepare-schema": "gql2ts src/TypeDefinitions/schema.graphql -o src/types/schema.d.ts"
    }
 }

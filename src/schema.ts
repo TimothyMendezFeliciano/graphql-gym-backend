@@ -23,10 +23,9 @@
 import {makeExecutableSchema} from "@graphql-tools/schema";
 import {importSchema} from "graphql-import";
 import {resolvers} from "./Resolvers/Resolvers";
+import * as path from "path";
 
-const typeDefinitions = importSchema('schema.graphql')
-
-
+const typeDefinitions = importSchema(path.join(__dirname, 'TypeDefinitions/schema.graphql'))
 
 export const schema = makeExecutableSchema({
     resolvers: [resolvers],

@@ -32,10 +32,21 @@ declare namespace GQL {
   interface IMutation {
     __typename: 'Mutation';
     register: boolean | null;
+    signIn: boolean | null;
   }
 
   interface IRegisterOnMutationArguments {
-    address: string;
+    publicAddress: string;
+    email: string;
+    firstName: string;
+    lastName: string;
+    isTrainer: boolean;
+    specialty?: string | null;
+  }
+
+  interface ISignInOnMutationArguments {
+    publicAddress: string;
+    signature: string;
   }
 }
 
