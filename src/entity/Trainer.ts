@@ -1,12 +1,12 @@
-import {Entity, Column, PrimaryColumn, BeforeInsert} from "typeorm"
+import {Entity, Column, PrimaryColumn, BeforeInsert, BaseEntity,} from "typeorm"
 import {v4 as uuidv4} from 'uuid';
 
-@Entity()
-export class Trainer {
+@Entity("Trainer")
+export class Trainer extends BaseEntity {
 
     @PrimaryColumn("uuid") id: string
 
-    @Column("varchar", {length: 40}) address: string
+    @Column("varchar", {length: 60, unique: true}) publicAddress: string
 
     @Column("varchar", {length: 255}) email: string
 
@@ -18,9 +18,16 @@ export class Trainer {
 
     @Column("boolean") isTrainer: boolean
 
+    @Column("numeric") nonce: number
+
     @BeforeInsert()
     addId() {
         this.id = uuidv4()
+    }
+
+    @BeforeInsert()
+    addNonce() {
+        this.nonce = Math.floor(Math.random() * 1000000)
     }
 
 }
