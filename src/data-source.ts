@@ -1,6 +1,6 @@
 import "reflect-metadata"
 import { DataSource } from "typeorm"
-import { User } from "./entity/User"
+import { Trainer } from "./entity/Trainer"
 
 export const AppDataSource = new DataSource({
     type: "postgres",
@@ -11,7 +11,7 @@ export const AppDataSource = new DataSource({
     database: "graphql-gym",
     synchronize: true,
     logging: false,
-    entities: [User],
+    entities: [Trainer],
     migrations: [],
     subscribers: [],
 })
