@@ -1,6 +1,7 @@
 // @ts-ignore
 import request from "graphql-request";
 import {host} from "./constants";
+import {Trainer} from "../entity/Trainer";
 
 describe("Start server and register first trainer", () => {
 
@@ -19,5 +20,13 @@ describe("Start server and register first trainer", () => {
     test("Create the first trainer", async () => {
         const response = await request(host, mutation)
         expect(response).toEqual({register: true})
+
+        const trainers = await Trainer.find({where: {
+            email: registerEmail
+            }})
+        expect(trainers).toHaveLength(1)
+        const trainer = trainers[0]
+        expect(trainer.publicAddress).toEqual(registerAddress)
+        expect(trainer.firstName).not.toEqual('Bob')
     })
 })
