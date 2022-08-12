@@ -1,0 +1,10 @@
+# import Error from '../../shared.graphql
+
+type Query {
+    bye: String
+}
+
+type Mutation {
+    register(publicAddress: String!, email: String!, firstName: String!, lastName: String!, isTrainer: Boolean!, specialty: String): [Error!]
+    signIn(publicAddress: String!, signature: String!): Boolean
+}
