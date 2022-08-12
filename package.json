@@ -22,11 +22,13 @@
     "@graphql-tools/schema": "^8.5.1",
     "@graphql-yoga/node": "2.13.6",
     "babel-jest": "^28.1.3",
+    "dotenv": "^16.0.1",
     "eth-sig-util": "^3.0.1",
     "ethereumjs-util": "^7.1.5",
     "graphql": "^16.5.0",
     "graphql-import": "^1.0.2",
     "graphql-request": "^4.3.0",
+    "graphql-tools": "^8.3.3",
     "graphql-yoga": "^2.13.6",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.3",
@@ -37,8 +39,8 @@
   },
   "scripts": {
     "start": "nodemon --exec ts-node --files src/index.ts",
-    "test": "jest",
+    "test": "jest --forceExit",
     "typeorm": "typeorm-ts-node-commonjs",
-    "prepare-schema": "gql2ts src/TypeDefinitions/schema.graphql -o src/types/schema.d.ts"
+    "prepare-schema": "gql2ts src/modules -o src/types/schema.d.ts"
   }
 }

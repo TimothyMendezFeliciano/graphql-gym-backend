@@ -1,33 +1,20 @@
-// import { AppDataSource } from "./data-source"
-// import { Trainer } from "./entity/Trainer"
-//
-// AppDataSource.initialize().then(async () => {
-//
-//     console.log("Inserting a new user into the database...")
-//     const user = new Trainer()
-//     user.firstName = "Timber"
-//     user.lastName = "Saw"
-//     user.age = 25
-//     await AppDataSource.manager.save(user)
-//     console.log("Saved a new user with id: " + user.id)
-//
-//     console.log("Loading users from the database...")
-//     const users = await AppDataSource.manager.find(Trainer)
-//     console.log("Loaded users: ", users)
-//
-//     console.log("Here you can setup and run express / fastify / any other framework.")
-//
-// }).catch(error => console.log(error))
 
-
-import {makeExecutableSchema} from "@graphql-tools/schema";
+import {makeExecutableSchema, mergeSchemas} from "@graphql-tools/schema";
 import {importSchema} from "graphql-import";
-import {resolvers} from "./Resolvers/Resolvers";
 import * as path from "path";
+import * as fs from 'fs'
+import {GraphQLSchema} from "graphql/type";
 
-const typeDefinitions = importSchema(path.join(__dirname, 'TypeDefinitions/schema.graphql'))
-
-export const schema = makeExecutableSchema({
-    resolvers: [resolvers],
-    typeDefs: [typeDefinitions]
+const schemas: GraphQLSchema[] = []
+const folders = fs.readdirSync(path.join(__dirname, "./modules"));
+folders.forEach(folder => {
+    const {resolvers} = require(`./modules/${folder}/resolvers`)
+    const typeDefs = importSchema(
+        path.join(__dirname, `./modules/${folder}/schema.graphql`)
+    )
+    schemas.push(makeExecutableSchema({
+        resolvers, typeDefs
+    }))
 })
+
+export const schema = mergeSchemas({schemas})
