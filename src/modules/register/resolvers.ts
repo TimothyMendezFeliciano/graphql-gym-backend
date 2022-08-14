@@ -2,21 +2,34 @@ import {bufferToHex} from "ethereumjs-util";
 import {recoverPersonalSignature} from "eth-sig-util";
 import {ResolverMap} from "../../types/graphql-utils";
 import {Trainer} from "../../entity/Trainer";
+import * as yup from 'yup'
+import {formatYupError} from "../../utils/formatYupError";
+
+const schema = yup.object().shape({
+    email: yup.string().min(3, "Must be at least 3 characters long").max(255).email()
+})
 
 export const resolvers: ResolverMap = {
     Query: {
         bye: () => "bye"
     },
     Mutation: {
-        register: async (_, {
-            publicAddress,
-            email,
-            firstName,
-            lastName,
-            isTrainer,
-            specialty
-        }: GQL.IRegisterOnMutationArguments) => {
-
+        register: async (_,
+                         args: GQL.IRegisterOnMutationArguments) => {
+            try {
+                await schema.validate(args, {abortEarly: false}) // Allows to show all the errors. not just the first.
+            } catch (error) {
+                console.log(error)
+                return formatYupError(error)
+            }
+            const {
+                publicAddress,
+                email,
+                firstName,
+                lastName,
+                isTrainer,
+                specialty
+            } = args
             const trainerAlreadyExists = await Trainer.findOne({
                 where: {email, publicAddress},
                 select: ['id']

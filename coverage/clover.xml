@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1660264038596" clover="3.2.0">
-  <project timestamp="1660264038598" name="All files">
-    <metrics statements="34" coveredstatements="30" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0" elements="36" coveredelements="30" complexity="0" loc="34" ncloc="34" packages="2" files="2" classes="2"/>
+<coverage generated="1660511578361" clover="3.2.0">
+  <project timestamp="1660511578361" name="All files">
+    <metrics statements="28" coveredstatements="26" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0" elements="29" coveredelements="26" complexity="0" loc="28" ncloc="28" packages="2" files="2" classes="2"/>
     <package name="entity">
-      <metrics statements="33" coveredstatements="29" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <metrics statements="27" coveredstatements="25" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="Trainer.ts" path="C:\Users\timot\GraphQL-GYMTrainers\graphql-backend\src\entity\Trainer.ts">
-        <metrics statements="33" coveredstatements="29" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <metrics statements="27" coveredstatements="25" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -29,16 +29,10 @@
         <line num="21" count="1" type="stmt"/>
         <line num="22" count="1" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
-        <line num="28" count="1" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
-        <line num="33" count="1" type="stmt"/>
       </file>
     </package>
     <package name="tests">
